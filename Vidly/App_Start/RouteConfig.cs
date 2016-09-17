@@ -27,6 +27,20 @@ namespace Vidly
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // Routing for VidlyAngular.
+            routes.MapRoute(
+                name: "VidlyAngular",
+                url: "Angular",
+                defaults: new { controller = "Angular", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "one",
+                url: "Angular/One",
+                defaults: new { controller = "Angular", action = "One" }
+            );
+
         }
     }
 }

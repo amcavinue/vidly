@@ -27,6 +27,15 @@ namespace Vidly
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular")
+                .Include(
+                    "~/Scripts/angular.min.js",
+                    "~/Scripts/angular-route.min.js",
+                    "~/Scripts/AngularUI/ui-router.min.js")
+                .IncludeDirectory("~/Scripts/Controllers", "*.js")
+                .IncludeDirectory("~/Scripts/Factories", "*.js")
+                .Include("~/Scripts/VidlyAngular.js"));
         }
     }
 }

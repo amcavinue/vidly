@@ -22,6 +22,7 @@ namespace Vidly.Controllers.API
             return _context.Customers.ToList();
         }
 
+        [Authorize(Roles = "Admin")]
         // GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
         {

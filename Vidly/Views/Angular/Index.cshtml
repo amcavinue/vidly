@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-app="VidlyAngular" ng-controller="LandingPageController">
+    <h2>Angular Section</h2>
+
+    <a ui-sref="stateOne">State One</a>
+
+    <div class="container mainContent">
+        <div class="row">
+            <div class="col-md-6">
+                <div ui-view="containerOne"></div>
+            </div>
+            <div class="col-md-6">
+                <div ui-view="containerTwo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/angular")
+}

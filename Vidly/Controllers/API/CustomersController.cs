@@ -17,13 +17,14 @@ namespace Vidly.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET /api/customers
+        [Authorize(Roles = "Admin")]
         public IEnumerable<Customer> GetCustomers()
         {
             return _context.Customers.ToList();
         }
 
-        [Authorize(Roles = "Admin")]
         // GET /api/customers/1
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);

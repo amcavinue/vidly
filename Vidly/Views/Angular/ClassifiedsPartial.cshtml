@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "";
+}
+
+<div class="filters" layout="row" layout-align="center center">
+    <md-input-container>
+        <label>Enter Search Term</label>
+        <input type="text" ng-model="classifiedsFilter" />
+    </md-input-container>
+</div>
+
+<ui-view></ui-view>
+
+<md-content>
+    <classified-card classifieds="vm.classifieds"
+                     classifieds-filter="classifiedsFilter"
+                     category="category"
+                     class="md-padding"
+                     layout="row"
+                     layout-wrap>
+    </classified-card>
+</md-content>

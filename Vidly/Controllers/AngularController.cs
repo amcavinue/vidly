@@ -18,5 +18,15 @@ namespace Vidly.Controllers
         {
             return View();
         }
+
+        public ActionResult ClassifiedsPartial()
+        {
+            return View();
+        }
+
+        public ActionResult ClassifiedCard()
+        {
+            return View();
+        }
     }
 }

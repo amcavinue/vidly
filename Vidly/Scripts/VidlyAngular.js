@@ -1,11 +1,12 @@
-﻿var VidlyAngular = angular.module('VidlyAngular', ['ui.router']);
+﻿var VidlyAngular = angular.module('VidlyAngular', ['ui.router', 'ngMaterial']);
 
 VidlyAngular.controller('LandingPageController', LandingPageController);
+VidlyAngular.controller('ClassifiedsController', ClassifiedsController);
 
-// TODO: Remove these & files.
 VidlyAngular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
-/* VidlyAngular.factory('LoginFactory', LoginFactory);
-VidlyAngular.factory('RegistrationFactory', RegistrationFactory); */
+VidlyAngular.factory('ClassifiedsFactory', ClassifiedsFactory);
+
+VidlyAngular.directive('classifiedCard', ClassifiedCardDirective);
 
 var config = function ($stateProvider, $httpProvider, $locationProvider) {
     $locationProvider.hashPrefix('!').html5Mode({
@@ -15,10 +16,19 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
 
     $stateProvider
         .state('stateOne', {
-            url: '/stateOne?donuts',
+            url: '/Angular/StateOne',
             views: {
                 "containerOne": {
                     templateUrl: '/Angular/One'
+                }
+            }
+        })
+        .state('classifieds', {
+            url: '/Angular/Classifieds',
+            views: {
+                "containerOne": {
+                    templateUrl: '/Angular/ClassifiedsPartial',
+                    controller: 'ClassifiedsController as vm'
                 }
             }
         });

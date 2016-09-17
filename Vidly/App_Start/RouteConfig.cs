@@ -41,6 +41,17 @@ namespace Vidly
                 defaults: new { controller = "Angular", action = "One" }
             );
 
+            routes.MapRoute(
+                name: "classifieds",
+                url: "Angular/ClassifiedsPartial",
+                defaults: new { controller = "Angular", action = "ClassifiedsPartial" }
+            );
+
+            routes.MapRoute(
+                name: "classifiedCard",
+                url: "Angular/ClassifiedCard",
+                defaults: new { controller = "Angular", action = "ClassifiedCard"}
+            );
         }
     }
 }

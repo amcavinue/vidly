@@ -5,17 +5,12 @@
 <div ng-app="VidlyAngular" ng-controller="LandingPageController">
     <h2>Angular Section</h2>
 
-    <a ui-sref="stateOne">State One</a>
+    <a ui-sref="stateOne">State One</a><br />
+    <a ui-sref="classifieds">Classifieds</a>
 
     <div class="container mainContent">
-        <div class="row">
-            <div class="col-md-6">
-                <div ui-view="containerOne"></div>
-            </div>
-            <div class="col-md-6">
-                <div ui-view="containerTwo"></div>
-            </div>
-        </div>
+        <div ui-view="containerOne"></div>
+        <div ui-view="containerTwo"></div>
     </div>
 </div>
 

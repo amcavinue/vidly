@@ -9,6 +9,7 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+    using System.IO;
     public class MoviesController : Controller
     {
         private ApplicationDbContext _context;
@@ -63,8 +64,10 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Movie movie)
+        public ActionResult Save(NewMovieViewModel vm)
         {
+            var movie = vm.Movie;
+            var files = vm.File;
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewMovieViewModel()
@@ -82,11 +85,35 @@ namespace Vidly.Controllers
             }
             else
             {
+                // Update database fields.
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
                 movieInDb.Name = movie.Name;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.Stock = movie.Stock;
+
+                var file = files[0];
+
+                if (file != null && file.ContentLength != 0)
+                {
+                    // Validate the image file.
+                    string fileExt = Path.GetExtension(file.FileName);
+                    if (fileExt.ToLower() == ".jpeg" || fileExt.ToLower() == ".jpg" ||
+                        fileExt.ToLower() == ".gif" || fileExt.ToLower() == ".png" ||
+                        fileExt.ToLower() == ".bitmap")
+                    {
+                        // Save file to server and db.
+                        var fileName = Path.GetFileName(file.FileName);
+                        var dir = "~/Content/uploads";
+                        var absDir = HttpContext.Server.MapPath(dir);
+                        if (!System.IO.Directory.Exists(absDir))
+                        {
+                            System.IO.Directory.CreateDirectory(absDir);
+                        }
+                        movieInDb.FileLocation = dir + "/" + fileName;
+                        file.SaveAs(Path.Combine(Server.MapPath(dir), fileName));
+                    }
+                }
             }
 
             _context.SaveChanges();

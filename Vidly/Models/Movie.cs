@@ -17,5 +17,6 @@ namespace Vidly.Models
         public DateTime ReleaseDate { get; set; }
         [Range(1, 20)]
         public int Stock { get; set; }
+        public string FileLocation { get; set; }
     }
 }

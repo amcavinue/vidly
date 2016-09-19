@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201607282145286_SeedUsers.Designer.cs">
       <DependentUpon>201607282145286_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609190042195_AddFileLocationToMovieClass.cs" />
+    <Compile Include="Migrations\201609190042195_AddFileLocationToMovieClass.Designer.cs">
+      <DependentUpon>201609190042195_AddFileLocationToMovieClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -1302,7 +1306,7 @@
     <Content Include="Views\Angular\ClassifiedsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1353,6 +1357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607282145286_SeedUsers.resx">
       <DependentUpon>201607282145286_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190042195_AddFileLocationToMovieClass.resx">
+      <DependentUpon>201609190042195_AddFileLocationToMovieClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

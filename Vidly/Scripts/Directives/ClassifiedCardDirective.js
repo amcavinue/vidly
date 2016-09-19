@@ -36,6 +36,7 @@
                 // Don't delete it.
             });
         }
+
         function showToast(message) {
             $mdToast.show(
                 $mdToast.simple()

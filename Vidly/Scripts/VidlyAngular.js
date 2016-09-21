@@ -16,19 +16,35 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
 
     $stateProvider
         .state('stateOne', {
-            url: '/Angular/StateOne',
+            url: '/StateOne',
             views: {
                 "containerOne": {
-                    templateUrl: '/Angular/One'
+                    templateUrl: '/One'
                 }
             }
         })
         .state('classifieds', {
-            url: '/Angular/Classifieds',
+            url: '/',
             views: {
                 "containerOne": {
-                    templateUrl: '/Angular/ClassifiedsPartial',
+                    templateUrl: '/ClassifiedsPartial',
                     controller: 'ClassifiedsController as vm'
+                }
+            }
+        })
+        .state('customersAdmin', {
+            url: '/CustomersAdmin',
+            views: {
+                "containerOne": {
+                    templateUrl: '../Customers/Index'
+                }
+            }
+        })
+        .state('moviesAdmin', {
+            url: '/MoviesAdmin',
+            views: {
+                "containerOne": {
+                    templateUrl: '../Movies/Index'
                 }
             }
         });

@@ -15,42 +15,36 @@ namespace Vidly
 
             routes.MapMvcAttributeRoutes();
 
-            //routes.MapRoute(
-            //    "MoviesByReleaseDate",
-            //    "movies/released/{year}/{month}",
-            //    new { controller = "Movies", action = "ByReleaseDate" },
-            //    new { year = @"2015|2016", month = @"\d{2}" }
-            //);
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
             // Routing for VidlyAngular.
             routes.MapRoute(
                 name: "VidlyAngular",
-                url: "Angular",
+                url: "",
                 defaults: new { controller = "Angular", action = "Index" }
             );
 
             routes.MapRoute(
                 name: "one",
-                url: "Angular/One",
+                url: "One",
                 defaults: new { controller = "Angular", action = "One" }
             );
 
             routes.MapRoute(
                 name: "classifieds",
-                url: "Angular/ClassifiedsPartial",
+                url: "ClassifiedsPartial",
                 defaults: new { controller = "Angular", action = "ClassifiedsPartial" }
             );
 
             routes.MapRoute(
                 name: "classifiedCard",
-                url: "Angular/ClassifiedCard",
+                url: "ClassifiedCard",
                 defaults: new { controller = "Angular", action = "ClassifiedCard"}
+            );
+
+            // Default routing for ASP.NET MVC.
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Angular", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

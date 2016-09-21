@@ -30,3 +30,8 @@ textarea {
 .input-validation-error {
     border: 2px solid red;
 }
+
+.admin-movie-img {
+    max-width: 200px;
+    max-height: 200px;
+}

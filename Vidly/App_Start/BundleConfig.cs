@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Optimization;
 
 namespace Vidly
@@ -26,8 +27,8 @@ namespace Vidly
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/angular-material/angular-material.min.css"));
+                      "~/Content/angular-material/angular-material.min.css",
+                      "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .Include(

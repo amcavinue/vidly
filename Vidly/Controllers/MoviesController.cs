@@ -64,10 +64,10 @@ namespace Vidly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(NewMovieViewModel vm)
+        public ActionResult Save(Movie movie)
         {
-            var movie = vm.Movie;
-            var files = vm.File;
+            var file = Request.Files["img-file"];
+
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewMovieViewModel()
@@ -92,27 +92,18 @@ namespace Vidly.Controllers
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.Stock = movie.Stock;
 
-                var file = files[0];
-
                 if (file != null && file.ContentLength != 0)
                 {
-                    // Validate the image file.
-                    string fileExt = Path.GetExtension(file.FileName);
-                    if (fileExt.ToLower() == ".jpeg" || fileExt.ToLower() == ".jpg" ||
-                        fileExt.ToLower() == ".gif" || fileExt.ToLower() == ".png" ||
-                        fileExt.ToLower() == ".bitmap")
+                    // Save file to server and db.
+                    var fileName = Path.GetFileName(file.FileName);
+                    var dir = "~/Content/uploads";
+                    var absDir = HttpContext.Server.MapPath(dir);
+                    if (!Directory.Exists(absDir))
                     {
-                        // Save file to server and db.
-                        var fileName = Path.GetFileName(file.FileName);
-                        var dir = "~/Content/uploads";
-                        var absDir = HttpContext.Server.MapPath(dir);
-                        if (!System.IO.Directory.Exists(absDir))
-                        {
-                            System.IO.Directory.CreateDirectory(absDir);
-                        }
-                        movieInDb.FileLocation = dir + "/" + fileName;
-                        file.SaveAs(Path.Combine(Server.MapPath(dir), fileName));
+                        Directory.CreateDirectory(absDir);
                     }
+                    movieInDb.FileLocation = dir + "/" + fileName;
+                    file.SaveAs(Path.Combine(Server.MapPath(dir), fileName));
                 }
             }
 
@@ -134,7 +125,8 @@ namespace Vidly.Controllers
             var viewModel = new NewMovieViewModel
             {
                 Movie = movie,
-                Genres = _context.Genres.ToList()
+                Genres = _context.Genres.ToList(),
+                // File = new List<HttpPostedFileBase>()
             };
 
             return View("New", viewModel);

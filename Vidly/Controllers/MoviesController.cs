@@ -66,8 +66,6 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
-            var file = Request.Files["img-file"];
-
             if (!ModelState.IsValid)
             {
                 var viewModel = new NewMovieViewModel()
@@ -85,6 +83,8 @@ namespace Vidly.Controllers
             }
             else
             {
+                var file = Request.Files["img-file"];
+
                 // Update database fields.
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
                 movieInDb.Name = movie.Name;

@@ -2,6 +2,7 @@
 
 VidlyAngular.controller('LandingPageController', LandingPageController);
 VidlyAngular.controller('ClassifiedsController', ClassifiedsController);
+VidlyAngular.controller('MoviesAdminEditController', MoviesAdminEditController);
 
 VidlyAngular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 VidlyAngular.factory('ClassifiedsFactory', ClassifiedsFactory);
@@ -45,6 +46,17 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
             views: {
                 "containerOne": {
                     templateUrl: '../Movies/Index'
+                }
+            }
+        })
+        .state('moviesAdmin.Edit', {
+            url: '/Edit/:movieId',
+            views: {
+                "containerOne@": {
+                    templateUrl: function ($stateParams) {
+                        return '../../Movies/Edit/' + $stateParams.movieId;
+                    },
+                    controller: 'MoviesAdminEditController'
                 }
             }
         });

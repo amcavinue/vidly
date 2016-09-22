@@ -125,8 +125,7 @@ namespace Vidly.Controllers
             var viewModel = new NewMovieViewModel
             {
                 Movie = movie,
-                Genres = _context.Genres.ToList(),
-                // File = new List<HttpPostedFileBase>()
+                Genres = _context.Genres.ToList()
             };
 
             return View("New", viewModel);

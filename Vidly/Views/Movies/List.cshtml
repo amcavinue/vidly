@@ -1,7 +1,7 @@
 ﻿@model System.Collections.Generic.List<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
 }
 
 <h2>Movies -- Admin</h2>
@@ -20,7 +20,7 @@ else
             @foreach (var movie in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(movie.Name, "Edit", new { id = movie.Id })</td>
+                    <td><a ui-sref="moviesAdmin.Edit({movieId: @movie.Id})">@movie.Name</a></td>
                     <td>@movie.Genre.Name</td>
                     <td>
                         @if (@movie.FileLocation != null)

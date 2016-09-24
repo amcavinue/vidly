@@ -15,7 +15,7 @@
     }
 </h2>
 
-<form ng-submit="onFormSubmit">
+<form ng-submit="onFormSubmit()" id="new-movie-form">
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
         @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })

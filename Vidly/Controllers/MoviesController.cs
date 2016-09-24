@@ -74,7 +74,8 @@ namespace Vidly.Controllers
                     Genres = _context.Genres.ToList()
                 };
 
-                return View("New", viewModel);
+                // return View("New", viewModel);
+                return Json(new { success = false, responseText = "It failed." }, JsonRequestBehavior.AllowGet);
             }
 
             if (movie.Id == 0)
@@ -109,7 +110,8 @@ namespace Vidly.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Movies");
+            // return RedirectToAction("Index", "Movies");
+            return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
 
 

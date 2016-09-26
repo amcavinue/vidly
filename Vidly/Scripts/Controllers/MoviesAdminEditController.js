@@ -1,10 +1,7 @@
-﻿var MoviesAdminEditController = function ($scope, $state, $http) {
+﻿var MoviesAdminEditController = function ($scope, $state, $http, $window) {
     $scope.onFormSubmit = function () {
         var formData = new FormData(angular.element('#new-movie-form')[0]);
 
-        // This works now, but it doesn't work when required fields are empty.
-        // The fail needs to handle that, and then send info back to the form...
-        // State.go needs to resend/update from the database.
         $.ajax({
             type: 'POST',
             data: formData,
@@ -15,14 +12,13 @@
             dataType: 'json',
             success: function (response) {
                 if (response !== null && response.success) {
-                    alert('success');
-                    $state.go('moviesAdmin');
-                } else {
-                    alert('failed');
+                    $state.transitionTo('moviesAdmin', {}, {
+                        reload: true, inherit: true, notify: true
+                    });
                 }
             }
         });
     }
 }
 
-MoviesAdminEditController.$inject = ['$scope', '$state', '$http'];
+MoviesAdminEditController.$inject = ['$scope', '$state', '$http', '$window'];

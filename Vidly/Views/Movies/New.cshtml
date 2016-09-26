@@ -15,25 +15,26 @@
     }
 </h2>
 
-<form ng-submit="onFormSubmit()" id="new-movie-form">
+<form ng-submit="onFormSubmit()" id="new-movie-form" name="newMovieForm">
     <div class="form-group">
         @Html.LabelFor(m => m.Movie.Name)
-        @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control", required = "required"})
         @Html.ValidationMessageFor(m => m.Movie.Name)
     </div>
     <div class="form-group">
         <label for="Movie_ReleaseDate">Release Date</label>
-        @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control", required = "required" })
         @Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
     </div>
     <div class="form-group">
         <label for="Movie_Genre">Genre</label>
-        @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control", required = "required" })
         @Html.ValidationMessageFor(m => m.Movie.GenreId, "The Genre field is required.")
     </div>
     <div class="form-group">
         <label for="Movie_Stock">Number in Stock</label>
-        @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control", required = "required", ng_min = "0", ng_max = "20", type="number", ng_model="movieStock", ng_init=String.Format("movieStock={0}", Model.Movie.Stock), id="movieStock" })
+        <span class="field-validation-error" ng-show="newMovieForm['Movie.Stock'].$error.min || newMovieForm['Movie.Stock'].$error.max">The value must be between 0 and 20.</span>
         @Html.ValidationMessageFor(m => m.Movie.Stock)
     </div>
     <div class="form-group">

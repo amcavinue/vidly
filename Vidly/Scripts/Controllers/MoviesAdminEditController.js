@@ -12,15 +12,15 @@
             processData: false,
             contentType: false,
             cache: false,
-            dataType: 'json'
-        })
-        .done(function () {
-            alert('success');
-            $state.go('moviesAdmin');
-        })
-        .fail(function () {
-            alert('failed');
-            $state.go('moviesAdmin');
+            dataType: 'json',
+            success: function (response) {
+                if (response !== null && response.success) {
+                    alert('success');
+                    $state.go('moviesAdmin');
+                } else {
+                    alert('failed');
+                }
+            }
         });
     }
 }

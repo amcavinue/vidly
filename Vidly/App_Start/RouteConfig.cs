@@ -23,12 +23,6 @@ namespace Vidly
             );
 
             routes.MapRoute(
-                name: "one",
-                url: "One",
-                defaults: new { controller = "Angular", action = "One" }
-            );
-
-            routes.MapRoute(
                 name: "classifieds",
                 url: "ClassifiedsPartial",
                 defaults: new { controller = "Angular", action = "ClassifiedsPartial" }

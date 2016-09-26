@@ -13,12 +13,7 @@ namespace Vidly.Controllers
         {
             return View();
         }
-
-        public ActionResult One()
-        {
-            return View();
-        }
-
+        
         public ActionResult ClassifiedsPartial()
         {
             return View();

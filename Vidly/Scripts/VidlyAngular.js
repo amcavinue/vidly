@@ -17,14 +17,6 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
     });
 
     $stateProvider
-        .state('stateOne', {
-            url: '/StateOne',
-            views: {
-                "containerOne": {
-                    templateUrl: '/One'
-                }
-            }
-        })
         .state('classifieds', {
             url: '/',
             views: {

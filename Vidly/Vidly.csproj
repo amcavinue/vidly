@@ -1302,7 +1302,6 @@
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Angular\Index.cshtml" />
-    <Content Include="Views\Angular\One.cshtml" />
     <Content Include="temp\classifieds.json" />
     <Content Include="Views\Angular\ClassifiedCard.cshtml" />
     <Content Include="Views\Angular\ClassifiedsPartial.cshtml" />

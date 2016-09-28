@@ -53,14 +53,6 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
                     controller: 'MoviesAdminEditController'
                 }
             }
-        })
-        .state('manage', {
-            url: '/Manage',
-            views: {
-                "containerOne": {
-                    templateUrl: '/Manage/Index'
-                }
-            }
         });
 
     $httpProvider.interceptors.push('AuthHttpResponseInterceptor');

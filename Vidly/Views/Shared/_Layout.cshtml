@@ -18,6 +18,11 @@
     </div>
 
     @Scripts.Render("~/bundles/lib")
+    @{var location = @ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();}
+    @if (location == "Angular")
+    {
+        @Scripts.Render("~/bundles/angular")
+    }
     @RenderSection("scripts", required: false)
 </body>
 </html>

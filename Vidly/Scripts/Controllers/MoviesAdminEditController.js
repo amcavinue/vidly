@@ -15,6 +15,8 @@
                     $state.transitionTo('moviesAdmin', {}, {
                         reload: true, inherit: true, notify: true
                     });
+                } else {
+                    alert('failed');
                 }
             }
         });

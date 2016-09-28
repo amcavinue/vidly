@@ -4,6 +4,7 @@ VidlyAngular.controller('LandingPageController', LandingPageController);
 VidlyAngular.controller('ClassifiedsController', ClassifiedsController);
 VidlyAngular.controller('MoviesAdminController', MoviesAdminController);
 VidlyAngular.controller('MoviesAdminEditController', MoviesAdminEditController);
+VidlyAngular.controller('CustomersAdminController', CustomersAdminController);
 
 VidlyAngular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 VidlyAngular.factory('ClassifiedsFactory', ClassifiedsFactory);
@@ -30,7 +31,18 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
             url: '/CustomersAdmin',
             views: {
                 "containerOne": {
-                    templateUrl: '/Customers/Index'
+                    templateUrl: '/Customers/Index',
+                    controller: 'CustomersAdminController'
+                }
+            }
+        })
+        .state('customersAdmin.Edit', {
+            url: '/Edit/:customerId',
+            views: {
+                "containerOne@": {
+                    templateUrl: function ($stateParams) {
+                        return '/Customers/Edit/' + $stateParams.customerId;
+                    }
                 }
             }
         })
@@ -50,6 +62,15 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
                     templateUrl: function ($stateParams) {
                         return '/Movies/Edit/' + $stateParams.movieId;
                     },
+                    controller: 'MoviesAdminEditController'
+                }
+            }
+        })
+        .state('moviesAdmin.New', {
+            url: '/New',
+            views: {
+                "containerOne@": {
+                    templateUrl: '/Movies/New',
                     controller: 'MoviesAdminEditController'
                 }
             }

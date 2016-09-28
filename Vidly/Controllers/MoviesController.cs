@@ -73,7 +73,7 @@ namespace Vidly.Controllers
                     Movie = movie,
                     Genres = _context.Genres.ToList()
                 };
-
+                    
                 return Json(new { success = false, responseText = "It failed." }, JsonRequestBehavior.AllowGet);
             }
 

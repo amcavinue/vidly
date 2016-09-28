@@ -10,11 +10,13 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-                @if (User.IsInRole("CanManageMovies"))
+                @{var location = @ViewContext.Controller.ValueProvider.GetValue("controller").RawValue.ToString();}
+                @if (User.IsInRole("CanManageMovies") && location != "Account" && location != "Manage")
                 {
                     <li><a ui-sref="customersAdmin">Customers Admin</a></li>
                     <li><a ui-sref="moviesAdmin">Movies Admin</a></li>
                 }
+                <li></li>
 			</ul>
 			@Html.Partial("_LoginPartial")
 		</div>

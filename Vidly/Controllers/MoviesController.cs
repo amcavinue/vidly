@@ -109,7 +109,7 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movie == null)
             {
@@ -123,6 +123,21 @@ namespace Vidly.Controllers
             };
 
             return View("New", viewModel);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return Json(new { success = false, responseText = "It failed." }, JsonRequestBehavior.AllowGet);
+            }
+
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+
+            return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
     }
 }

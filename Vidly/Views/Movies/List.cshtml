@@ -15,7 +15,7 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table id="movies" class="table table-bordered table-hover">
         <thead></thead>
         <tbody>
             @foreach (var movie in Model)
@@ -33,6 +33,11 @@ else
                         {
                             <span>No image.</span>
                         }
+                    </td>
+                    <td>
+                        <button class='btn-link movie-delete' data-movie-id="@movie.Id">
+                            Delete
+                        </button>
                     </td>
                 </tr>
             }

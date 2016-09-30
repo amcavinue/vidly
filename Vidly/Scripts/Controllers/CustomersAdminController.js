@@ -1,7 +1,11 @@
-﻿var CustomersAdminController = function ($scope, $compile) {
+﻿var CustomersAdminController = function ($scope, $compile, $templateCache) {
+    // TODO: Figure out key for '/CustomersAdmin/Edit/*' pages 
+    // and use $templateCache.remove('key'); instead.
+    $templateCache.removeAll();
+
     $("#customers").DataTable({
         ajax: {
-            url: "../api/customers",
+            url: "http://" + location.host + "/api/customers",
             dataSrc: ""
         },
         columns: [
@@ -41,4 +45,4 @@
     });
 }
 
-CustomersAdminController.$inject = ['$scope', '$compile'];
+CustomersAdminController.$inject = ['$scope', '$compile', '$templateCache'];

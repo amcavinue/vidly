@@ -17,7 +17,7 @@ namespace Vidly.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET /api/customers
-        // [Authorize(Roles = "CanManageMovies")]
+        [Authorize(Roles = "CanManageMovies")]
         public IEnumerable<Customer> GetCustomers()
         {
             return _context.Customers.ToList();

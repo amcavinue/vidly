@@ -41,13 +41,24 @@ namespace Vidly.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new NewCustomerViewModel
+                List<string> errors = new List<string>();
+
+                foreach (ModelState modelState in ViewData.ModelState.Values)
                 {
-                    Customer = customer,
-                    MembershipTypes = _context.MembershipTypes.ToList()
+                    foreach (ModelError error in modelState.Errors)
+                    {
+                        errors.Add(error.ErrorMessage);
+                    }
+                }
+
+                var response = new
+                {
+                    success = false,
+                    responseText = "It failed.",
+                    errors = errors.ToArray()
                 };
 
-                return View("New", viewModel);
+                return Json(response, JsonRequestBehavior.AllowGet);
             }
 
             if (customer.Id == 0)
@@ -65,7 +76,7 @@ namespace Vidly.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Customers");
+            return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Customers
@@ -73,8 +84,9 @@ namespace Vidly.Controllers
         {
             // Use Entity Framework to get the customers from the database & iterate over it immediately.
             // var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            var membershipTypes = _context.MembershipTypes.ToList();
 
-            return View();
+            return View(membershipTypes);
         }
 
         // GET: Customers/Details/{id}

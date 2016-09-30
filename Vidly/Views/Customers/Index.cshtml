@@ -1,18 +1,31 @@
-﻿@{
+﻿@model List<Vidly.Models.MembershipType>
+@{
     ViewBag.Title = "Index";
     Layout = "";
 }
 
 <h2>Customers</h2>
-    <table id="customers" class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Customer</th>
-                <th>Membership Type</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data table renders here. -->
-        </tbody>
-    </table>
+<a ui-sref="customersAdmin.New" class="btn btn-primary" role="button" style="margin-bottom: 1em;">New Customer</a>
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data table renders here. -->
+    </tbody>
+</table>
+
+<script>
+    var memberships = {};
+
+    @foreach (var member in Model) {
+        <text>
+        memberships[@member.Id] = '@member.Name';
+        </text>
+    }
+
+</script>

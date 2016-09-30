@@ -68,12 +68,6 @@ namespace Vidly.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new NewMovieViewModel()
-                {
-                    Movie = movie,
-                    Genres = _context.Genres.ToList()
-                };
-                    
                 return Json(new { success = false, responseText = "It failed." }, JsonRequestBehavior.AllowGet);
             }
 

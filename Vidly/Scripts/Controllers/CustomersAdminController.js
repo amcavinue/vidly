@@ -12,7 +12,10 @@
                 }
             },
             {
-                data: "membershipType",
+                data: "membershipTypeId",
+                render: function (data) {
+                    return memberships[data];
+                }
             },
             {
                 data: "id",

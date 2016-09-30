@@ -417,6 +417,7 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Scripts\Controllers\ClassifiedsController.js" />
     <Content Include="Scripts\Controllers\CustomersAdminController.js" />
+    <Content Include="Scripts\Controllers\CustomersAdminEditController.js" />
     <Content Include="Scripts\Controllers\LandingPageController.js" />
     <Content Include="Scripts\Controllers\MoviesAdminController.js" />
     <Content Include="Scripts\Controllers\MoviesAdminEditController.js" />

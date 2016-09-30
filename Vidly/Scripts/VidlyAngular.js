@@ -5,6 +5,7 @@ VidlyAngular.controller('ClassifiedsController', ClassifiedsController);
 VidlyAngular.controller('MoviesAdminController', MoviesAdminController);
 VidlyAngular.controller('MoviesAdminEditController', MoviesAdminEditController);
 VidlyAngular.controller('CustomersAdminController', CustomersAdminController);
+VidlyAngular.controller('CustomersAdminEditController', CustomersAdminEditController);
 
 VidlyAngular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 VidlyAngular.factory('ClassifiedsFactory', ClassifiedsFactory);
@@ -42,7 +43,17 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
                 "containerOne@": {
                     templateUrl: function ($stateParams) {
                         return '/Customers/Edit/' + $stateParams.customerId;
-                    }
+                    },
+                    controller: 'CustomersAdminEditController'
+                }
+            }
+        })
+        .state('customersAdmin.New', {
+            url: '/New',
+            views: {
+                "containerOne@": {
+                    templateUrl: '/Customers/New',
+                    controller: 'CustomersAdminEditController'
                 }
             }
         })

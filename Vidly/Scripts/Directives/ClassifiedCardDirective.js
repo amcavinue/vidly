@@ -1,6 +1,6 @@
 ﻿var ClassifiedCardDirective = function () {
     return {
-        templateUrl: "ClassifiedCard",
+        templateUrl: "/Angular/ClassifiedCard",
         scope: {
             classifieds: "=classifieds",
             classifiedsFilter: "=classifiedsFilter",

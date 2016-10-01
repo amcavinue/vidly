@@ -15,25 +15,6 @@ namespace Vidly
 
             routes.MapMvcAttributeRoutes();
 
-            // Routing for VidlyAngular.
-            routes.MapRoute(
-                name: "VidlyAngular",
-                url: "",
-                defaults: new { controller = "Angular", action = "Index" }
-            );
-
-            routes.MapRoute(
-                name: "classifieds",
-                url: "ClassifiedsPartial",
-                defaults: new { controller = "Angular", action = "ClassifiedsPartial" }
-            );
-
-            routes.MapRoute(
-                name: "classifiedCard",
-                url: "ClassifiedCard",
-                defaults: new { controller = "Angular", action = "ClassifiedCard"}
-            );
-
             // Default routing for ASP.NET MVC.
             routes.MapRoute(
                 name: "Default",

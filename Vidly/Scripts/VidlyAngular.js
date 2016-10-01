@@ -23,7 +23,7 @@ var config = function ($stateProvider, $httpProvider, $locationProvider) {
             url: '/',
             views: {
                 "containerOne": {
-                    templateUrl: '/ClassifiedsPartial',
+                    templateUrl: '/Angular/ClassifiedsPartial',
                     controller: 'ClassifiedsController as vm'
                 }
             }

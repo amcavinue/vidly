@@ -77,8 +77,6 @@ namespace Vidly.Controllers
             }
             else
             {
-                var file = Request.Files["img-file"];
-
                 // Update database fields.
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
                 movieInDb.Name = movie.Name;
@@ -86,19 +84,9 @@ namespace Vidly.Controllers
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.Stock = movie.Stock;
 
-                if (file != null && file.ContentLength != 0)
-                {
-                    // Save file to server and db.
-                    var fileName = Path.GetFileName(file.FileName);
-                    var dir = "~/Content/uploads";
-                    var absDir = HttpContext.Server.MapPath(dir);
-                    if (!Directory.Exists(absDir))
-                    {
-                        Directory.CreateDirectory(absDir);
-                    }
-                    movieInDb.FileLocation = dir + "/" + fileName;
-                    file.SaveAs(Path.Combine(Server.MapPath(dir), fileName));
-                }
+                // Save the image file.
+                var file = Request.Files["Movie.FileLocation"];
+                movieInDb.SaveImage(file, HttpContext);
             }
 
             _context.SaveChanges();

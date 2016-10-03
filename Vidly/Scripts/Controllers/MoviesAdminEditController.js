@@ -5,7 +5,7 @@
         $.ajax({
             type: 'POST',
             data: formData,
-            url: '../../Movies/Save',
+            url: "http://" + location.host + "/Movies/Save",
             processData: false,
             contentType: false,
             cache: false,

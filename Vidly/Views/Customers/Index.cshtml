@@ -18,14 +18,3 @@
         <!-- Data table renders here. -->
     </tbody>
 </table>
-
-<script>
-    var memberships = {};
-
-    @foreach (var member in Model) {
-        <text>
-        memberships[@member.Id] = '@member.Name';
-        </text>
-    }
-
-</script>

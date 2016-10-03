@@ -3,6 +3,7 @@
     // and use $templateCache.remove('key'); instead.
     $templateCache.removeAll();
 
+    // Load the datatable from the REST api.
     $("#customers").DataTable({
         ajax: {
             url: "http://" + location.host + "/api/customers",
@@ -12,14 +13,11 @@
             {
                 data: "name",
                 render: function (data, type, customer) {
-                    return '<a href="/CustomersAdmin/Edit/'+ customer.id + '">' + customer.name + '</a>';
+                    return '<a href="/CustomersAdmin/Edit/' + customer.id + '">' + customer.name + '</a>';
                 }
             },
             {
-                data: "membershipTypeId",
-                render: function (data) {
-                    return memberships[data];
-                }
+                data: "membershipType.name"
             },
             {
                 data: "id",
@@ -30,6 +28,7 @@
         ]
     });
 
+    // Watch the delete button.
     $("#customers").on("click", ".js-delete", function () {
         var button = $(this);
 

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Vidly.Models;
+using System.Data.Entity;
 
 namespace Vidly.Controllers.API
 {
@@ -20,7 +21,7 @@ namespace Vidly.Controllers.API
         [Authorize(Roles = "CanManageMovies")]
         public IEnumerable<Customer> GetCustomers()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.Include(c => c.MembershipType).ToList();
         }
 
         // GET /api/customers/1

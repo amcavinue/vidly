@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http.Headers;
 
 namespace Vidly
 {
@@ -16,6 +17,9 @@ namespace Vidly
             settings.Formatting = Formatting.Indented;
 
             config.MapHttpAttributeRoutes();
+
+            // Return json instead of xml.
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

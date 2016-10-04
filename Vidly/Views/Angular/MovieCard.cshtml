@@ -1,9 +1,9 @@
-﻿@{ 
+﻿@{
     Layout = "";
 }
 
 <md-card ng-repeat="classified in classifieds | filter: classifiedsFilter" flex="30" class="classified">
-    <img ng-src="{{ classified.image }}" alt="" />
+    <img ng-src="{{ classified.fileLocation }}" alt="" />
     <md-card-content>
         <div class="classified-info" ng-show="!showContact">
             <h2 class="md-title">{{ classified.title }}</h2>

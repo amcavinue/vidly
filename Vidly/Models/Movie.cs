@@ -25,7 +25,7 @@ namespace Vidly.Models
             {
                 if (FileLocation != null)
                 {
-                    // Delete the old file from the server.
+                    // Delete the old file.
                     File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + FileLocation);
                 }
 

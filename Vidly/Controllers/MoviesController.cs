@@ -94,7 +94,6 @@ namespace Vidly.Controllers
             return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
 
-
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
@@ -126,6 +125,11 @@ namespace Vidly.Controllers
             _context.SaveChanges();
 
             return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
+        }
+
+        public IEnumerable<Movie> GetMovies()
+        {
+            return _context.Movies.Include(m => m.Genre).ToList();
         }
     }
 }

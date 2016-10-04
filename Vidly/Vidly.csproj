@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AngularController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\MembershipTypesController.cs" />
+    <Compile Include="Controllers\API\MoviesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -1305,6 +1306,7 @@
     <Content Include="temp\classifieds.json" />
     <Content Include="Views\Angular\ClassifiedCard.cshtml" />
     <Content Include="Views\Angular\ClassifiedsPartial.cshtml" />
+    <Content Include="Views\Angular\MovieCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -71,26 +71,7 @@ namespace Vidly.Controllers
                 return Json(new { success = false, responseText = "It failed." }, JsonRequestBehavior.AllowGet);
             }
 
-            if (movie.Id == 0)
-            {
-                _context.Movies.Add(movie);
-            }
-            else
-            {
-                // Update database fields.
-                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
-                movieInDb.Name = movie.Name;
-                movieInDb.ReleaseDate = movie.ReleaseDate;
-                movieInDb.GenreId = movie.GenreId;
-                movieInDb.Stock = movie.Stock;
-
-                // Save the image file.
-                var file = Request.Files["Movie.FileLocation"];
-                movieInDb.SaveImage(file, HttpContext);
-            }
-
-            _context.SaveChanges();
-
+            movie.UpdateDb(Request, HttpContext, _context, movie);
             return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
 

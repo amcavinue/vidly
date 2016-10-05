@@ -18,5 +18,23 @@ namespace Vidly.Models
         public MembershipType MembershipType { get; set; }
         [Min18YearsIfaMember]
         public DateTime? Birthday { get; set; }
+
+        public void UpdateDb(ApplicationDbContext _context, Customer customer)
+        {
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthday = customer.Birthday;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+
+            _context.SaveChanges();
+        }
     }
 }

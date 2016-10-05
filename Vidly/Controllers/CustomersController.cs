@@ -36,7 +36,7 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-        [HttpPost] // Can only be called by post & not get, since it accesses data.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
@@ -62,21 +62,7 @@ namespace Vidly.Controllers
                 return Json(response, JsonRequestBehavior.AllowGet);
             }
 
-            if (customer.Id == 0)
-            {
-                _context.Customers.Add(customer);
-            }
-            else
-            {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
-                customerInDb.Name = customer.Name;
-                customerInDb.Birthday = customer.Birthday;
-                customerInDb.MembershipTypeId = customer.MembershipTypeId;
-                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            }
-
-            _context.SaveChanges();
-
+            customer.UpdateDb(_context, customer);
             return Json(new { success = true, responseText = "It worked." }, JsonRequestBehavior.AllowGet);
         }
 

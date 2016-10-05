@@ -42,5 +42,28 @@ namespace Vidly.Models
                 FileLocation = dir + "/" + fileName;
             }
         }
+
+        public void UpdateDb(HttpRequestBase _request, HttpContextBase _httpContext, ApplicationDbContext _context, Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                // Update database fields.
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.Stock = movie.Stock;
+
+                // Save the image file.
+                var file = _request.Files["Movie.FileLocation"];
+                movieInDb.SaveImage(file, _httpContext);
+            }
+
+            _context.SaveChanges();
+        }
     }
 }

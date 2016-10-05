@@ -19,6 +19,7 @@ namespace Vidly.Models
         [Range(1, 20)]
         public int Stock { get; set; }
         public string FileLocation { get; set; }
+        public string Description { get; set; }
         public void SaveImage(HttpPostedFileBase file, HttpContextBase _httpContext)
         {
             if (file != null && file.ContentLength != 0)

@@ -8,6 +8,11 @@
     $scope.$watch('classifiedsFilter', function () {
         $scope.$emit('cardsLoaded');
     });
+
+    $scope.TriggerReadMore = function () {
+        $scope.$emit('cardsLoaded');
+        return false;
+    }
 }
 
 ClassifiedsController.$inject = ['$scope', 'ClassifiedsFactory', '$rootScope'];

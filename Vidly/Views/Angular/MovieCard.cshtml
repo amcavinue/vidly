@@ -11,7 +11,8 @@
             <small>Released: {{ classified.releaseDate | date: 'longDate' }}</small>
             <br />
             <small>Added: {{ classified.dateAdded | date: 'longDate' }}</small>
-            <p>{{ classified.description }}</p>
+            <hr />
+            <p class="read-more">{{ classified.description }}</p>
         </div>
     </md-card-content>
 </md-card>

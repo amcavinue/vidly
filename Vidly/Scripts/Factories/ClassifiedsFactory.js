@@ -5,8 +5,6 @@
             .then(function (response) {
                 return response.data;
             })
-
-            return $http.get("http://" + location.host + "/temp/classifieds.json").then(function(res) { return res.data});
         }
     }
 }

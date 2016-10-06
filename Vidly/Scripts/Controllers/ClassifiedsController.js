@@ -1,10 +1,13 @@
-﻿var ClassifiedsController = function ($scope, ClassifiedsFactory) {
+﻿var ClassifiedsController = function ($scope, ClassifiedsFactory, $rootScope) {
     var vm = this;
     
     ClassifiedsFactory.getClassifieds().then(function (classifieds) {
         vm.classifieds = classifieds;
-        console.log(classifieds);
+    });
+
+    $scope.$watch('classifiedsFilter', function () {
+        $scope.$emit('cardsLoaded');
     });
 }
 
-ClassifiedsController.$inject = ['$scope', 'ClassifiedsFactory'];
+ClassifiedsController.$inject = ['$scope', 'ClassifiedsFactory', '$rootScope'];

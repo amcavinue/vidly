@@ -1,5 +1,8 @@
 ﻿var VidlyAngular = angular.module('VidlyAngular', ['ui.router', 'ngMaterial']);
 
+VidlyAngular.directive('classifiedCard', ClassifiedCardDirective);
+VidlyAngular.directive('readMore', ReadMoreDirective);
+
 VidlyAngular.controller('LandingPageController', LandingPageController);
 VidlyAngular.controller('ClassifiedsController', ClassifiedsController);
 VidlyAngular.controller('MoviesAdminController', MoviesAdminController);
@@ -9,8 +12,6 @@ VidlyAngular.controller('CustomersAdminEditController', CustomersAdminEditContro
 
 VidlyAngular.factory('AuthHttpResponseInterceptor', AuthHttpResponseInterceptor);
 VidlyAngular.factory('ClassifiedsFactory', ClassifiedsFactory);
-
-VidlyAngular.directive('classifiedCard', ClassifiedCardDirective);
 
 var config = function ($stateProvider, $httpProvider, $locationProvider) {
     $locationProvider.hashPrefix('!').html5Mode({

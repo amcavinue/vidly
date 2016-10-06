@@ -32,6 +32,7 @@ namespace Vidly
 
             bundles.Add(new ScriptBundle("~/bundles/angular")
                 .Include(
+                    "~/Scripts/readmore.min.js",
                     "~/Scripts/angular.min.js",
                     "~/Scripts/angular-route.min.js",
                     "~/Scripts/AngularUI/ui-router.min.js",
